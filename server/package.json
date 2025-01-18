@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "node dist/index.js",
+    "dev": "nodemon --watch 'api/**/*.js' --exec 'node' api/index.js",
+    "build": "echo 'No build step required for JavaScript'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

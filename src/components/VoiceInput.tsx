@@ -24,7 +24,7 @@ const VoiceInput = ({ onVoiceMessage }: VoiceInputProps) => {
 
           const serverResponse = await fetch(
             // "http://localhost:5000/transcribe",
-            "/transcribe",
+            "/api/transcribe",
             {
               method: "POST",
               body: formData,

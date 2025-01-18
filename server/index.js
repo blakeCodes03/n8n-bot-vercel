@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const port = 5433;
+const port = 3000;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-app.post("/transcribe", upload.single("file"), async (req, res) => {
+app.post("/api/transcribe", upload.single("file"), async (req, res) => {
   try {
     const filePath = req.file.path;
 
@@ -114,15 +114,15 @@ app.use((err, req, res, next) => {
   next();
 });
 
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
-
-app.use(express.static(path.resolve("frontend", "dist")));
-app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 
+// app.use(express.static(path.resolve("frontend", "dist")));
+// app.get("/", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+// });
 
-module.exports = app;
+
+// module.exports = app;
 //NPM RUN START
